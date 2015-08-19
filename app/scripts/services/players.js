@@ -3,12 +3,9 @@
 
 myApp.service('PlayersService', ['$q', '$http', '$timeout', function($q, $http, $timeout) {
 
-  console.log('service called');
 
   var self = this;
   var players = {};
-
-
 
   self.loadPlayers = function getPlayers() {
 

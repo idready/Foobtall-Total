@@ -45,3 +45,27 @@ myApp.controller('PlayerCtrl', ['$scope', '$routeParams', '$rootScope', 'Players
     );
 
 }]);
+
+
+myApp.controller('LoginCtrl', ['$scope', '$rootScope', 'AuthService', function($scope, $rootScope, AuthService){
+
+    console.log('Login controller');
+
+    $rootScope.loading = true;
+
+    $scope.form = {
+
+    };
+
+    $scope.logUser = function logUser(e) {
+
+      console.log('huh');
+      if (angular.isDefined(e)) {
+
+        e.preventDefault();
+      }
+
+      console.log('check form');
+    }
+
+}]);

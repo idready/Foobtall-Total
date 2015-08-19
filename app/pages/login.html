@@ -1,0 +1,18 @@
+<h1>login</h1>
+
+<div>
+
+    <form action="" method="post" name="form.login" novalidate ng-submit="logUser($event)">
+
+        <div class="col-xs-12 col-sm-6 form-group">
+            <input  class="form-control" placeholder="Login" type="text" name="name" id="user-name" ng-model="form.login.name">
+        </div>
+        <div class="col-xs-12 col-sm-6 form-group">
+            <input  class="form-control" placeholder="Mot de passe" type="password" name="password" id="user-password" ng-model="form.login.password">
+        </div>
+        <div class="col-xs-12 form-group">
+            <button class="btn btn-info" type="submit">Se connecter</button>
+        </div>
+    </form>
+
+</div>
