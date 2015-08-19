@@ -1,0 +1,25 @@
+node_modules
+dist
+.dist
+.tmp
+.sass-cache
+app/.sass-cache
+bower_components
+Vagrantfile
+
+
+.gitattributes
+.jshintrc
+.yo-rc.json
+npm-debug.log
+
+
+#custom
+test
+.vagrant
+design
+
+# Database, ressources &  more
+
+*.sql
+*.zip

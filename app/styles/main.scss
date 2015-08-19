@@ -1,0 +1,75 @@
+
+//bootstrap compass
+@import '../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap-compass';
+@import '../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
+
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+// used html for specifity fight for now
+
+/* Space out content a bit */
+html body {
+
+  background: #C0CCE8;
+  color: #404040;
+  padding-bottom: 20px;
+}
+
+html {
+
+  .players {
+
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+
+    flex-wrap: wrap;
+  }
+
+  .player-card {
+
+    @include clearfix;
+    background: white;
+    display: block;
+    color: #404040;
+    margin-bottom: 2em;
+    padding-left: 0;
+
+    &:hover {
+
+      color: #404040;
+      text-decoration: none;
+    }
+
+    img,
+    .player-infos {
+
+      float: left;
+    }
+
+    .player-infos {
+
+      padding-top: 2em;
+    }
+
+    img {
+      margin-right: 2em;
+      max-width: 100%;
+    }
+
+    @media (min-width: $screen-sm-min) {
+
+      img {}
+    }
+  }
+
+}
