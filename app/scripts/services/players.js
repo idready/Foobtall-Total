@@ -52,10 +52,11 @@ myApp.service('PlayersService', ['$q', '$http', '$timeout', function($q, $http, 
 
     var deffered = $q.defer();
 
-    if ( angular.isDefined(self.getPlayers()) ) {
+    if ( !angular.isDefined(self.getPlayers()) ) {
 
       // load players
       var players = self.loadPlayers();
+
       players.then(
 
         function(datas){

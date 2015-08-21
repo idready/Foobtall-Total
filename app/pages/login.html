@@ -1,18 +1,41 @@
-<h1>login</h1>
 
-<div>
+<div class="container">
 
-    <form action="" method="post" name="form.login" novalidate ng-submit="logUser($event)">
-
-        <div class="col-xs-12 col-sm-6 form-group">
-            <input  class="form-control" placeholder="Login" type="text" name="name" id="user-name" ng-model="form.login.name">
+  <!-- Pasted from bootstrap for rapid prototype -->
+  <form class="form-signin"  action="" method="post" name="form.login" novalidate ng-submit="logUser($event)">
+    <div class="form-group col-xs-12">
+        <h2 class="form-signin-heading">Please sign in</h2>
+    </div>
+    <!-- Email -->
+    <div class="form-group col-xs-6" ng-class="{'has-error': form.login.email.$invalid}">
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" name="email" ng-model="login.email" placeholder="Adresse email*" ng-blur required>
+        <div class="help-group" ng-show="form.login.email.$dirty">
+            <p class="error help-block" ng-show="form.login.email.$error.required">Champ email obligatoire.</p>
+            <p class="error help-block" ng-show="form.login.email.$invalid">Champ email invalide. <i>Example: momo@gmail.com</i></p>
         </div>
-        <div class="col-xs-12 col-sm-6 form-group">
-            <input  class="form-control" placeholder="Mot de passe" type="password" name="password" id="user-password" ng-model="form.login.password">
+    </div>
+    <!-- Password -->
+    <div class="form-group col-xs-6">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" ng-model="login.password" placeholder="Mot de passe" minlength="6" maxlength="32" ng-blur required>
+        <div class="help-group" ng-class="{'has-error': form.login.password.$dirty}" ng-show="form.login.password.$dirty">
+            <p class="error help-block" ng-show="form.login.password.$error.required">Mot de passe obligatoire.</p>
+            <p class="error help-block" ng-show="form.login.password.$minlength">Mot de passe avec 6 caractères minimum et 32 au maximum.</p>
         </div>
-        <div class="col-xs-12 form-group">
-            <button class="btn btn-info" type="submit">Se connecter</button>
-        </div>
-    </form>
+    </div>
+    <div class="checkbox form-group col-xs-12 hidden">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <!-- Submit -->
+    <div class="form-group col-xs-12">
+        <button class="btn btn-md btn-primary" type="submit" ng-disabled="form.login.$invalid">Sign in</button>
+    </div>
+    <div class="has-error col-xs-12" ng-show="login.failed">
+        <p class="help-block">{{login.error}}</p>
+    </div>
+  </form>
 
 </div>
