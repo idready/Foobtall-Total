@@ -1,15 +1,15 @@
 
 <section class="players" ng-hide="loading">
 
-  <a href="#/player/{{::player.index}}" class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="player in players">
+  <a href="#/player/{{::player.index}}" class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="player in ::players">
     <div class="player-card">
-      <img src="{{::player.picture}}" alt="">
+      <img src="{{player.picture}}" alt="">
       <div class="player-infos">
-        <p><strong>{{::player.name}}</strong></p>
+        <p><strong>{{player.name}}</strong></p>
         <p ng-show="player.isActive">En ligne</p>
-        <p>Victories: {{::player.victories}}</p>
-        <p>Défaites: {{::player.defeats}}</p>
-        <p>Matchs: {{::player.totalGames}}</p>
+        <p>Victories: {{player.victories}}</p>
+        <p>Défaites: {{player.defeats}}</p>
+        <p>Matchs: {{player.totalGames}}</p>
       </div>
     </div>
   </a>
