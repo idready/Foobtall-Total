@@ -31,22 +31,22 @@ myApp.service('PlayersService', ['$q', '$http', '$timeout', function($q, $http, 
       })
       .error(function(errors, status){
 
-        deffered.reject('Erreur: '+status+' avec ce message: '+errors);
+        deffered.reject('Erreur: ' + status + ' avec ce message: ' + errors);
       });
     }
 
     return deffered.promise;
-  }
+  };
 
   self.setPlayers = function setPlayers(datas) {
 
     self.players = datas;
-  }
+  };
 
-  self.getPlayers = function getPlayers(datas) {
+  self.getPlayers = function getPlayers() {
 
     return self.players;
-  }
+  };
 
   self.getPlayer = function getPlayer(id) {
 
@@ -55,20 +55,20 @@ myApp.service('PlayersService', ['$q', '$http', '$timeout', function($q, $http, 
     if ( !angular.isDefined(self.getPlayers()) ) {
 
       // load players
-      var players = self.loadPlayers();
+      var loadPlayers = self.loadPlayers();
 
-      players.then(
+      loadPlayers.then(
 
         function(datas){
 
           self.setPlayers(datas);
           deffered.resolve(datas[id]);
         },
-        function(error){
+        function(errors){
 
-          deffered.reject('Erreur: '+status+' avec ce message: '+errors);
+          deffered.reject('Erreur: ' + errors);
         }
-      )
+      );
 
     } else {
 
@@ -77,6 +77,6 @@ myApp.service('PlayersService', ['$q', '$http', '$timeout', function($q, $http, 
     }
 
     return deffered.promise;
-  }
+  };
 
 } ]);

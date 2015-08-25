@@ -52,44 +52,44 @@ myApp.controller('LoginCtrl', ['$scope', '$rootScope', '$timeout', '$window', 'A
 
         if (angular.isDefined(e)) {
 
-        e.preventDefault();
+            e.preventDefault();
 
-        if ($scope.form.login.$valid) {
+            if ($scope.form.login.$valid) {
 
-            console.log('checking');
-            $rootScope.loading = true;
-            // Remove login state when trying again
-            $scope.login.failed = false;
+                console.log('checking');
+                $rootScope.loading = true;
+                // Remove login state when trying again
+                $scope.login.failed = false;
 
-            var email = $scope.login.email;
-            var password = $scope.login.password;
+                var email = $scope.login.email;
+                var password = $scope.login.password;
 
-            var login = AuthService.login(email, password);
+                var login = AuthService.login(email, password);
 
-            login.then(
+                login.then(
 
-                function(data){
+                    function(data){
 
-                    if (data === true) {
-                        console.log('true')
+                        if (data === true) {
+
+                            $rootScope.loading = false;
+                            // redirect user to its page
+                            $window.location = '/#/player/5/';
+                        }
+                    },
+                    function(error){
+
                         $rootScope.loading = false;
-                        // redirect user to its page
-                        $window.location = '/#/player/5/';
+                        $scope.login.failed = true;
+                        $scope.login.error = error.message;
                     }
-                },
-                function(error){
+                );
 
-                    $rootScope.loading = false;
-                    $scope.login.failed = true;
-                    $scope.login.error = error.message;
-                }
-            );
+            }
 
         }
 
-      }
 
-
-    }
+    };
 
 }]);
