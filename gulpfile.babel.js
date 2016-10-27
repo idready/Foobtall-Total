@@ -19,8 +19,15 @@ gulp.task('styles', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['last 1 version']}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
-    .pipe(reload({stream: true}));
+    .pipe(gulp.dest('app/styles'))
+    .pipe(reload({stream: true, match: '**/*.css'})); // The Match avoid full page reload for .map files
+});
+
+gulp.task('scripts', () => {
+
+    return gulp.src('app/scripts/**/*.js')
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('jshint-stylish'))
 });
 
 function lint(files, options) {
@@ -102,12 +109,24 @@ gulp.task('serve', ['styles', 'fonts'], () => {
   });
 
   gulp.watch([
-    'app/*.html',
+    'app/**/*.html',
     'app/scripts/**/*.js',
     'app/images/**/*',
     '.tmp/fonts/**/*'
   ]).on('change', reload);
 
+  var jsWatcher = gulp.watch('app/scripts/**/*.js', ['scripts']);
+  jsWatcher.on('change', function(evt){
+
+    if (evt.error !== undefined) {
+        console.log('Watcher triggered Error Event : ' + evt.error);
+    }
+    if (evt.nomatch !== undefined) {
+        console.log('Glob matched no Files for Js Files, please check for files path ' + evt.nomatch);
+        this.end(); // End the watcher and avoid other task to be called
+    }
+
+  });
   gulp.watch('app/styles/**/*.scss', ['styles']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);

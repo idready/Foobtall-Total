@@ -16,7 +16,7 @@ myApp.controller('HomeCtrl', ['$scope', '$timeout', '$rootScope', 'PlayersServic
         },
         function(error){
 
-        console.wran('Couldn\' load datas, check the PLayersService');
+            console.wran('Couldn\' load datas, check the PLayersService');
         }
     );
 
@@ -42,7 +42,7 @@ myApp.controller('PlayerCtrl', ['$scope', '$routeParams', '$rootScope', 'Players
 }]);
 
 
-myApp.controller('LoginCtrl', ['$scope', '$rootScope', '$timeout', '$window', 'AuthService', function($scope, $rootScope, $timeout, $window, AuthService){
+myApp.controller('LoginCtrl', ['$scope', '$rootScope', '$timeout', '$window', 'AuthService', 'StorageService', function($scope, $rootScope, $timeout, $window, AuthService, StorageService){
 
     // Wait for login to initiate loading
     $rootScope.loading = false;
@@ -64,21 +64,27 @@ myApp.controller('LoginCtrl', ['$scope', '$rootScope', '$timeout', '$window', 'A
                 var email = $scope.login.email;
                 var password = $scope.login.password;
 
-                var login = AuthService.login(email, password);
+                console.log(email);
+                console.log(password);
 
-                login.then(
+                $scope.logUser = AuthService.login(email, password);
+
+                $scope.logUser.then(
 
                     function(data){
 
-                        if (data === true) {
+                        if (data.isActive === true) {
 
                             $rootScope.loading = false;
+                            StorageService.setItem('customer', data);
                             // redirect user to its page
                             $window.location = '/#/player/5/';
+                            console.info('redirecting...');
                         }
                     },
                     function(error){
 
+                        console.error(error);
                         $rootScope.loading = false;
                         $scope.login.failed = true;
                         $scope.login.error = error.message;
@@ -86,6 +92,7 @@ myApp.controller('LoginCtrl', ['$scope', '$rootScope', '$timeout', '$window', 'A
                 );
 
             }
+
 
         }
 

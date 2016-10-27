@@ -1,0 +1,27 @@
+NameVirtualHost *:9200
+
+<VirtualHost *:80>
+  DocumentRoot "/var/www/"
+  ServerName football-total.dev.fr
+
+  <Directory /var/www/>
+    AllowOverride All
+  </Directory>
+
+  ErrorLog "/var/log/apache2/football-total.error.log"
+  CustomLog "/var/log/apache2/football-total.access.log" common
+
+</VirtualHost>
+
+<VirtualHost *:9200>
+  DocumentRoot "/var/www/"
+  ServerName football-total.dev.fr
+
+  <Directory /var/www/>
+    AllowOverride All
+  </Directory>
+
+  ErrorLog "/var/log/apache2/football-total.error.log"
+  CustomLog "/var/log/apache2/football-total.access.log" common
+
+</VirtualHost>

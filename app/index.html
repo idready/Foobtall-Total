@@ -20,7 +20,8 @@
 
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="server-version/bower_components/modernizr/modernizr.js"></script>
+    <script src="server-version/bower_components/angular/angular.min.js"></script>
     <!-- endbuild -->
 
   </head>
@@ -101,15 +102,15 @@
     </main>
 
 
-    <script src="bower_components/velocity/velocity.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="server-version/bower_components/velocity/velocity.min.js"></script>
+    <script src="server-version/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="server-version/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="server-version/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
     <!-- build:js({app,.tmp}) scripts/main.js -->
 
     <script src="scripts/app.js"></script>
     <script src="scripts/config.js"></script>
+    <script src="scripts/services/storage.js"></script>
     <script src="scripts/services/auth.js"></script>
     <script src="scripts/services/players.js"></script>
     <script src="scripts/main.js"></script>

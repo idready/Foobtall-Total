@@ -23,3 +23,7 @@ design
 
 *.sql
 *.zip
+
+# Moved files for server only
+
+app/server-version
